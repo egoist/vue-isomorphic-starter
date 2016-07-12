@@ -11,7 +11,7 @@ config.plugins = config.plugins.concat([
     '__DEV__': false,
     'process.env': JSON.stringify('production')
   }),
-  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
       warnings: false

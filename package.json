@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "VUE_ENV=server node server.js",
-    "build": "npm run build:client && npm run build:server",
+    "start": "VUE_ENV=server NODE_ENV=production node server.js",
+    "build": "rm -rf ./build && npm run build:client && npm run build:server",
     "dev": "VUE_ENV=server NODE_ENV=development nodemon --watch server -x \"npm run build:server && node\" server.js",
     "build:server": "webpack --config scripts/webpack.server.js",
     "watch:server": "webpack --config scripts/webpack.server.js --watch",
