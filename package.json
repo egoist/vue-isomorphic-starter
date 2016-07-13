@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm run build:client-dev",
     "start": "VUE_ENV=server NODE_ENV=production node server.js",
     "build": "rm -rf ./build && npm run build:client && npm run build:server",
     "dev": "VUE_ENV=server NODE_ENV=development nodemon --watch server -x \"npm run build:server && node\" server.js",
     "build:server": "webpack --config scripts/webpack.server.js",
     "watch:server": "webpack --config scripts/webpack.server.js --watch",
+    "build:client-dev": "webpack --config scripts/webpack.client.dev.js",
     "build:client": "webpack --config scripts/webpack.client.prod.js"
   },
   "author": "EGOIST <0x142857@gmail.com>",
