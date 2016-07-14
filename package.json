@@ -21,6 +21,7 @@
     "url": "git+https://github.com/egoist/vue-isomorphic-starter.git"
   },
   "dependencies": {
+    "babel-runtime": "^6.9.2",
     "combined-stream": "^1.0.5",
     "koa": "^2.0.0",
     "koa-convert": "^1.2.0",
