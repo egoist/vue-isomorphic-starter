@@ -9,7 +9,7 @@ config.output.filename = 'bundle.[chunkhash].js'
 config.plugins = config.plugins.concat([
   new webpack.DefinePlugin({
     '__DEV__': false,
-    'process.env': JSON.stringify('production')
+    'process.env.NODE_ENV': JSON.stringify('production')
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
