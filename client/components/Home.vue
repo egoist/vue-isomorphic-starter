@@ -1,4 +1,4 @@
-<style lang="css">
+<style>
 
 .container-main {
     .logo-vue, .brief {

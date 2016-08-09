@@ -1,4 +1,4 @@
-<style lang="css">
+<style>
 
 .container {
     display: flex;
