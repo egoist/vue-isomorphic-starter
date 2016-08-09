@@ -1,5 +1,4 @@
 <style>
-
 .container {
     display: flex;
     height: 100%;
@@ -18,14 +17,11 @@
         }
     }
 }
-
 </style>
 
 <template lang="html">
-
 <div class="container">
     <div class="left">
-
     </div>
     <div class="center">
         <section class="brief">
@@ -48,8 +44,6 @@
         </section>
     </div>
     <div class="right">
-
     </div>
 </div>
-
 </template>

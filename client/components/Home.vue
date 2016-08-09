@@ -1,5 +1,4 @@
 <style>
-
 .container-main {
     .logo-vue, .brief {
         display: flex;
@@ -29,11 +28,9 @@
         }
     }
 }
-
 </style>
 
 <template lang="html">
-
 <div class="container-main">
     <section class="logo-vue">
         <div class="center">
@@ -50,7 +47,6 @@
     </section>
     <section class="features">
         <div class="left">
-
         </div>
         <div class="center">
             <h2>Features</h2>
@@ -63,8 +59,6 @@
             </ul>
         </div>
         <div class="right">
-
         </div>
 </div>
-
 </template>

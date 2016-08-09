@@ -1,10 +1,8 @@
 <template>
-
   <div id="app">
     <Navbar></Navbar>
     <router-view></router-view>
   </div>
-
 </template>
 
 <script>
@@ -27,7 +25,6 @@
     sans-serif;
     margin: 0;
   }
-
   .count {
     margin: 0 auto;
     background-color: #f0f0f0;

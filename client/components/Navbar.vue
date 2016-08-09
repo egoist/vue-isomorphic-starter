@@ -1,5 +1,4 @@
 <style>
-
 nav {
     .container {
         display: flex;
@@ -71,7 +70,6 @@ nav {
         }
     }
 }
-
 </style>
 
 <template lang="html">
@@ -106,18 +104,3 @@ nav {
         </div>
     </nav>
 </template>
-
-<script>
-
-export default {
-    data: function() {
-        return {}
-    },
-    computed: {},
-    ready: function() {},
-    attached: function() {},
-    methods: {},
-    components: {}
-}
-
-</script>

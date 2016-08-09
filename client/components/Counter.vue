@@ -1,5 +1,4 @@
 <style>
-
 .counter {
     cursor: pointer;
     margin: 100px auto;
@@ -13,21 +12,16 @@
     box-shadow: inset 0 0 10px #ccc;
     user-select: none;
 }
-
 </style>
 
 <template>
-
 <div class='counter' @click='increment'>
     {{ count }}
 </div>
-
 </template>
 
 <script>
-
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
     methods: {
         ...mapActions([
