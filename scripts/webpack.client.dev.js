@@ -7,9 +7,9 @@ config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
-		'__DEV__': true,
-		'process.env.NODE_ENV': JSON.stringify('development')
-	})
+    '__DEV__': true,
+    'process.env.NODE_ENV': JSON.stringify('development')
+  })
 ])
 
 module.exports = config
