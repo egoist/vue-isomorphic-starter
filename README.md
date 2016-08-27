@@ -1,6 +1,7 @@
 # vue-isomorphic-starter
 
 Vue server-side rendering in real life. ~(≧▽≦)/~
+which uses Vue2, Vuex, Vue-router, Koa2 and Webpack 2
 
 ## Features
 

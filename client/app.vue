@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <div class="count" @click="handleClick">{{ count }}</div>
+    <Navbar></Navbar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+  import Navbar from './components/Navbar.vue'
   export default {
-    data() {
-      return {count: 0}
-    },
-    methods: {
-      handleClick() {
-        this.count ++
-      }
+    components: {
+      Navbar,
     }
   }
 </script>
@@ -20,11 +17,12 @@
 <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont,
-               'avenir next', avenir,
-               helvetica, 'helvetica neue',
-               Ubuntu,
-               'segoe ui', arial,
-               sans-serif;
+    'avenir next', avenir,
+    helvetica, 'helvetica neue',
+    Ubuntu,
+    'segoe ui', arial,
+    sans-serif;
+    margin: 0;
   }
   .count {
     margin: 0 auto;

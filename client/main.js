@@ -1,14 +1,6 @@
-import Vue from 'vue'
-import App from './app'
+import { app, store } from './app.js'
 
-if (typeof window !== 'undefined') {
-  new Vue({
-    el: '#app',
-    render: h => h(App)
-  })
-} else {
-  module.exports = new Vue({
-    render: h => h(App)
-  })
-}
- 
+// get the initialstate from server-rendering.
+store.replaceState(window.__INITIAL_STATE__)
+
+app.$mount('#app')

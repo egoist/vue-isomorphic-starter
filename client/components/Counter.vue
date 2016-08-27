@@ -1,0 +1,45 @@
+<style>
+  .counter {
+    cursor: pointer;
+    margin: 100px auto;
+    border-radius: 3px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 5rem;
+    background-color: #f0f0f0;
+    box-shadow: inset 0 0 10px #ccc;
+    user-select: none;
+  }
+</style>
+
+<template>
+  <div class='counter' @click='INC'>
+    {{ count }}
+  </div>
+</template>
+
+<script>
+  const ssr_test = (store) => {
+    return store.dispatch('SSR_TEST')
+  }
+  import {mapGetters, mapActions} from 'vuex'
+  export default {
+    name: 'Counter',
+    methods: {
+      ...mapActions([
+        'INC'
+      ])
+    },
+    computed: {
+      ...mapGetters({
+        count: 'getCount'
+      })
+    },
+    preFetch: ssr_test,
+    beforeMount() {
+      ssr_test(this.$store)
+    },
+  }
+</script>
