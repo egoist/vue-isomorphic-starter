@@ -37,24 +37,6 @@
           list-style: none;
         }
       }
-      &::after,
-      &::before {
-        position: absolute;
-        z-index: -1;
-        top: 10px;
-        bottom: 15px;
-        left: 10px;
-        width: 50%;
-        content: "";
-        box-shadow: 0 15px 10px rgba(0, 0, 0, 0.5);
-        transform: rotate(-1.5deg);
-      }
-      &::after {
-        right: 10px;
-        left: auto;
-        transform: rotate(1.5deg);
-      }
-
       a {
         padding: 20px;
         color: #4FC08D;

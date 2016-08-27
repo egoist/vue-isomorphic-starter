@@ -6,8 +6,8 @@ export default context => {
 
   // Prefetch
   return Promise.all(router.getMatchedComponents().map(component => {
-    if (component.prefetch) {
-      return component.prefetch(store)
+    if (component.preFetch) {
+      return component.preFetch(store)
     }
   })).then(() => {
     context.initialState = store.state

@@ -1,10 +1,12 @@
 'use strict'
 const webpack = require('webpack')
 const base = require('./webpack.client')
+const externals = require('webpack-node-externals')
 
 module.exports = Object.assign({}, base, {
   target: 'node',
   devtool: null,
+  externals: [externals()],
   entry: [
     './client/server-entry.js'
   ],

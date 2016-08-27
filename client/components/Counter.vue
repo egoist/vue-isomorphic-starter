@@ -15,23 +15,31 @@
 </style>
 
 <template>
-  <div class='counter' @click='increment'>
+  <div class='counter' @click='INC'>
     {{ count }}
   </div>
 </template>
 
 <script>
+  const ssr_test = (store) => {
+    return store.dispatch('SSR_TEST')
+  }
   import {mapGetters, mapActions} from 'vuex'
   export default {
+    name: 'Counter',
     methods: {
       ...mapActions([
-        'increment'
+        'INC'
       ])
     },
     computed: {
       ...mapGetters({
         count: 'getCount'
       })
-    }
+    },
+    preFetch: ssr_test,
+    beforeMount() {
+      ssr_test(this.$store)
+    },
   }
 </script>
