@@ -1,3 +1,5 @@
+> This is kind of experimental, you may also want to checkout the official example: https://github.com/vuejs/vue-hackernews-2.0
+
 # vue-isomorphic-starter
 
 Vue server-side rendering in real life. ~(≧▽≦)/~
