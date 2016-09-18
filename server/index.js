@@ -3,8 +3,7 @@ import fs from 'fs'
 import Koa from 'koa'
 import convert from 'koa-convert'
 import serve from 'koa-static-server'
-import str from 'string-to-stream'
-import CombinedStream from 'combined-stream'
+import { PassThrough } from 'stream'
 import {createBundleRenderer} from 'vue-server-renderer'
 import serialize from 'serialize-javascript'
 import MFS from 'memory-fs'
@@ -55,34 +54,31 @@ if (process.env.NODE_ENV === 'development') {
   renderer = createRenderer(fs)
 }
 
-app.use(async(ctx, next) => {
+app.use((ctx, next) => {
   ctx.type = 'text/html; charset=utf-8'
   const context = {url: ctx.url}
   const title = 'Vue Isomorphic Starter'
-  ctx.status = 200
-  ctx.body = CombinedStream.create()
-  ctx.body.append(str(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>${title}</title>${assets.main.css ? `<link rel="stylesheet" href="${assets.main.css}"/>` : ''}</head><body>`))
-  let firstChunk = true
+  const stream = new PassThrough()
+  stream.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>${title}</title>${assets.main.css ? `<link rel="stylesheet" href="${assets.main.css}"/>` : ''}</head><body>`)
   const renderStream = renderer.renderToStream(context)
-
-  // handle the initialState and the first chunk
-  ctx.body.append(await new Promise((resolve, reject) => {
-    renderStream.on('data', chunk => {
-      if (firstChunk && context.initialState) {
-        resolve(str(`<script>window.__INITIAL_STATE__=${serialize(context.initialState, {isJSON: true})}</script>${chunk.toString()}`))
-        firstChunk = false
-      } else {
-        resolve(str(chunk.toString()))
-      }
-    })
-    renderStream.on('error', (err) => {
-      reject(err)
-    })
-  }))
-
-  // if there are rest chunks
-  ctx.body.append(renderStream)
-  ctx.body.append(str(`<script src="${assets.main.js}"></script></body></html>`))
+  let firstChunk = true
+  renderStream.on('data', chunk => {
+    if (firstChunk && context.initialState) {
+      stream.write(`<script>window.__INITIAL_STATE__=${serialize(context.initialState, {isJSON: true})}</script>${chunk}`)
+      firstChunk = false
+    } else {
+      stream.write(chunk)
+    }
+  })
+  renderStream.on('end', () => {
+    stream.write(`<script src="${assets.main.js}"></script></body></html>`)
+    ctx.res.end()
+  })
+  renderStream.on('error', (err) => {
+    throw new Error(`something bad happened when renderToStream: ${err}`)
+  })
+  ctx.status = 200
+  ctx.body=stream
 })
 
 const port = process.env.NODE_PORT || 5000

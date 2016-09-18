@@ -60,6 +60,7 @@
       </div>
       <div class="right">
       </div>
+    </section>
   </div>
 </template>
 
