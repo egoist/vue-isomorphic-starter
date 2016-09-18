@@ -6,19 +6,19 @@ import * as getters from './getters'
 Vue.use(Vuex)
 
 const mutations = {
-  INCREMENT: (state) => {
+  INCREMENT: state => {
     state.count++
   },
   SET_INITIAL_COUNT: (state, val) => {
     state.count = val
-  },
+  }
 }
 
 export default new Vuex.Store({
   state: {
-    count: 0,
+    count: 0
   },
   actions,
   mutations,
-  getters,
+  getters
 })

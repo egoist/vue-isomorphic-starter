@@ -60,11 +60,12 @@
       </div>
       <div class="right">
       </div>
+    </section>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Home',
+    name: 'Home'
   }
 </script>

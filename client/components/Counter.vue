@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  const ssr_test = (store) => {
+  const ssrTest = store => {
     return store.dispatch('SSR_TEST')
   }
   import {mapGetters, mapActions} from 'vuex'
@@ -37,9 +37,9 @@
         count: 'getCount'
       })
     },
-    preFetch: ssr_test,
+    preFetch: ssrTest,
     beforeMount() {
-      ssr_test(this.$store)
-    },
+      ssrTest(this.$store)
+    }
   }
 </script>
