@@ -3,14 +3,14 @@ import fs from 'fs'
 import Koa from 'koa'
 import convert from 'koa-convert'
 import serve from 'koa-static-server'
-import { PassThrough } from 'stream'
+import {PassThrough} from 'stream'
 import {createBundleRenderer} from 'vue-server-renderer'
 import serialize from 'serialize-javascript'
 import MFS from 'memory-fs'
 import assets from '../build/webpack-assets'
 
 let renderer
-const createRenderer = (fs) => {
+const createRenderer = fs => {
   const bundlePath = path.resolve(process.cwd(), 'build/server-bundle.js')
   return createBundleRenderer(fs.readFileSync(bundlePath, 'utf-8'))
 }
@@ -48,13 +48,12 @@ if (process.env.NODE_ENV === 'development') {
     renderer = createRenderer(mfs)
   })
 } else {
-
   // use nginx to serve static files in real
   app.use(convert(serve({rootDir: path.join(process.cwd(), 'build'), rootPath: '/static'})))
   renderer = createRenderer(fs)
 }
 
-app.use((ctx, next) => {
+app.use(ctx => {
   ctx.type = 'text/html; charset=utf-8'
   const context = {url: ctx.url}
   const title = 'Vue Isomorphic Starter'
@@ -74,11 +73,11 @@ app.use((ctx, next) => {
     stream.write(`<script src="${assets.main.js}"></script></body></html>`)
     ctx.res.end()
   })
-  renderStream.on('error', (err) => {
+  renderStream.on('error', err => {
     throw new Error(`something bad happened when renderToStream: ${err}`)
   })
   ctx.status = 200
-  ctx.body=stream
+  ctx.body = stream
 })
 
 const port = process.env.NODE_PORT || 5000
