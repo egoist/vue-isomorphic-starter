@@ -1,0 +1,15 @@
+{
+  "extends": "xo-space/esnext",
+  "plugins": [
+    "vue"
+  ],
+  "rules": {
+    "semi": ["error", "never"],
+    "curly": ["error", "multi-line"],
+    "no-warning-comments": 0,
+    "max-lines": 0
+  },
+  "env": {
+    "browser": "true"
+  }
+}
