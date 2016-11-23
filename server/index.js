@@ -70,8 +70,9 @@ app.use(ctx => {
     }
   })
   renderStream.on('end', () => {
-    stream.write(`<script src="${assets.main.js}"></script></body></html>`)
-    ctx.res.end()
+    stream.write(`<script src="${assets.main.js}"></script></body></html>`, () => {
+    ctx.res.end() 
+    })
   })
   renderStream.on('error', err => {
     throw new Error(`something bad happened when renderToStream: ${err}`)
