@@ -1,6 +1,4 @@
-> This is kind of experimental, you may also want to checkout the official example: https://github.com/vuejs/vue-hackernews-2.0
-
-# vue-isomorphic-starter
+# Check out https://github.com/egoist/unvue as the successor of this project.
 
 Vue server-side rendering in real life. ~(≧▽≦)/~
 which uses Vue2, Vuex, Vue-router, Koa2 and Webpack 2
